@@ -48,7 +48,8 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
-        //
+        $produto = Produto::findOrFail($id);
+        return new ProdutoResource($produto);
     }
 
     /**

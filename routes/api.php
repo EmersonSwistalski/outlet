@@ -19,4 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Exibe todos os produtos
 Route::get('/produtos',[ProdutoController::class,'index']);
+
+//Exibe determinado produto
+Route::get('/produto/{id}', [ProdutoController::class,'show']);
