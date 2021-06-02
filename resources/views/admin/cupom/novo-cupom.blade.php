@@ -11,7 +11,7 @@
     </div>
     <div class="mb-3">
       <label for="valorCupom" class="form-label">Desconto</label>
-      <input type="text" class="form-control" name="desconto">
+      <input type="number" class="form-control" step="0.01" name="desconto">
     </div>
     <label>Tipo do Desconto</label>
     <div class="form-check">

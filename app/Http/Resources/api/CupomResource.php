@@ -17,7 +17,7 @@ class CupomResource extends JsonResource
         return [
             'id' => $this->id,
             'nome' => $this->nome,
-            'desconto' =>$this->desconto / 100,
+            'desconto' =>number_format($this->desconto / 100,2,",","."),
             'modo_desconto' =>$this->modo_desconto,
         ];
     }

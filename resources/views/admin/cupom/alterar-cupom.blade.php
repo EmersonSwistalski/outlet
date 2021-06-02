@@ -11,7 +11,7 @@
     </div>
     <div class="mb-3">
       <label for="valorCupom" class="form-label">Valor do Desconto</label>
-      <input type="number" class="form-control" name="desconto" value="{{$cupom->desconto}}">
+      <input type="number" class="form-control" name="desconto" step="0.01" value="{{$cupom->desconto}}">
     </div>
     <label>Tipo do Desconto</label>
     <div class="form-check">

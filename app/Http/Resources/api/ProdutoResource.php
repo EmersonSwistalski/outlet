@@ -19,7 +19,7 @@ class ProdutoResource extends JsonResource
             'id' => $this->id,
             'nome' => $this->nome,
             'descricao' => $this->descricao,
-            'valor' => $this->valor / 100,
+            'valor' => number_format($this->valor/100, 2,",","."),
         ];
 
     }

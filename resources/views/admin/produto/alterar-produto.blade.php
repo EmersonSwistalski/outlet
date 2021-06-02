@@ -15,7 +15,7 @@
     </div>
     <div class="mb-3">
       <label for="valorProduto" class="form-label">Valor do Produto</label>
-      <input type="number" class="form-control" name="valor" value="{{$produto->valor}}">
+      <input type="number" class="form-control" name="valor" step="0.01" value="{{$produto->valor}}">
     </div>
     <button type="submit" class="btn btn-dark">Alterar</button>
   </form>
