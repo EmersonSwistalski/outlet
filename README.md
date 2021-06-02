@@ -11,9 +11,9 @@
 <p> - Criar o banco de dados </p>
 <p> - Configurar o arquivo .env para acesso ao banco </p>
 <h5> Executar os seguintes comandos: </h5>
-<p> - composer-update </p>
-<p> - npm-install </p>
-<p> - npm run dev ou npm run prod</p>
-<p> - php artisan migrate </p>
-<p> - php artisan db:seed </p>
-<p> - php artisan key:generate </p>
+<p>  composer-update </p>
+<p>  npm-install </p>
+<p>  npm run dev ou npm run prod</p>
+<p>  php artisan migrate </p>
+<p>  php artisan db:seed </p>
+<p>  php artisan key:generate </p>
