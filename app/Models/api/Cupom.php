@@ -5,15 +5,12 @@ namespace App\Models\api;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Produto extends Model
+class Cupom extends Model
 {
-    use HasFactory;
-
-    protected $table = 'produtos';
+    protected $table = 'cupoms';
     protected $fillable = [
         'nome',
-        'descricao',
-        'valor'
+        'desconto',
+        'modo_desconto',
     ];
-
 }

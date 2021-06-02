@@ -4,7 +4,10 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\api\ProdutoResource;
+use App\Models\api\Cupom;
 use App\Models\api\Produto;
+use App\Models\api\ProdutoCupom;
+use Error;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -16,7 +19,25 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        return ProdutoResource::collection(Produto::all());
+        $produtos = Produto::all();
+        $produtosComDesconto = ProdutoCupom::all();
+
+        foreach ($produtos as $produto){
+            foreach ($produtosComDesconto as $produtoComDesconto){
+                if ($produtoComDesconto->produto_id == $produto->id){
+                    $cupom = Cupom::findOrFail($produtoComDesconto->cupom_id);
+                    if ($cupom->modo_desconto == "fixo"){
+                        $produto->valor -= $cupom->desconto;
+                    }
+                    if ($cupom->modo_desconto == "porcentagem"){
+                        $produto->valor -= $produto->valor * ($cupom->desconto / 100) / 100;  
+                    }
+                }
+            }
+        }
+
+        return ProdutoResource::collection($produtos);
+
     }
 
     /**
@@ -37,7 +58,16 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produto = new Produto();
+        $produto->nome = $request->nome;
+        $produto->descricao = $request->descricao;
+        $produto->valor = $request->valor * 100;
+
+        if ($produto->save()){
+            return new ProdutoResource($produto);
+        } else {
+            return "Error";
+        }
     }
 
     /**
@@ -72,7 +102,14 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $produto = Produto::findOrFail($id);
+        $produto->nome = $request->nome;
+        $produto->descricao = $request->descricao;
+        $produto->valor = $request->valor * 100;
+
+        $produto->save();
+        return new ProdutoResource($produto);
+
     }
 
     /**
@@ -83,6 +120,9 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $produto = Produto::findOrFail($id);
+        $produto->delete();
+        return new ProdutoResource($produto);
     }
+
 }

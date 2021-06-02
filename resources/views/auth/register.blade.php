@@ -1,59 +1,35 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
+@extends('layouts.app')
+@section('content')
+<main class="text-center">
+    <div class="container mt-5">
         <form method="POST" action="{{ route('register') }}">
             @csrf
+            <img class="mb-2" src="/images/outlet.svg" alt="" width="80" height="65">
+            <h1 class="h3 mb-3">Cadastrar Novo Usuário</h1>
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
+            <div class="col-lg-4 col-md-4 col-sm-4 container align-items-center justify-content-center">
+                <div class="col">
+                    <div class="form-floating">
+                        <input type="text" class="form-control mb-1" name="name" placeholder="Ex: João da Silva" required>
+                        <label for="floatingInputName">Nome</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="email" class="form-control mb-1" name="email" placeholder="nome@exemplo.com" required>
+                        <label for="floatingInputEmail">Email</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control mb-1" name="password" placeholder="Senha" required>
+                        <label for="floatingPassword">Senha</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control mb-1" name="password_confirmation" placeholder="Confirme sua Senha" required>
+                        <label for="floatingPasswordConfirmation">Confirmar Senha</label>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-dark" type="submit">Cadastrar</button>
+                    <p class="mt-5 mb-3 text-muted">©2021</p>
+                </div>
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+    </div>
+</main>
+@endsection
