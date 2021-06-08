@@ -1,5 +1,7 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
+<b><i><h5>Para uso da TROC: Favor utilizar somente a brench master, continuarei desenvolvendo o projeto paralelamente</h5></b></i>
+
 <h4> Considerações: </h4>
 <h5>Ao fazer a instalação da aplicação, a mesma irá gerar um usuário padrão com o e-mail "admin@admin.com" e senha "admin" </h5>
 <h5> Para realizar qualquer operação de CRUD é necessário estar logado </h3>
